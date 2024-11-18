@@ -6,8 +6,8 @@ const Message = ({ message }) => {
 	const { authUser } = useAuthContext();
 	const { selectedConversation } = useConversation();
 
-  console.log("Message Sender ID:", message.senderID);
-  console.log("Authenticated User ID:", authUser?._id);
+//   console.log("Message Sender ID:", message.senderID);
+//   console.log("Authenticated User ID:", authUser?._id);
 
 	const fromMe = message.senderID === authUser._id;
 	const formattedTime = extractTime(message.createdAt);

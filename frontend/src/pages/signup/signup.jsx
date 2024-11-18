@@ -25,7 +25,7 @@ const handleCheckboxChange = (gender) =>{
 
 const handlesubmit = async (e) =>{
 	e.preventDefault();
-	console.log(inputs);
+	// console.log(inputs);
 	await signup(inputs)
 }
 
