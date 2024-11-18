@@ -14,9 +14,9 @@ export const AuthContextProvider = ({ children }) => {
 
   // Load the user from localStorage when the app loads
   useEffect(() => {
-    const storedUser = JSON.parse(localStorage.getItem("chat-user"));
+    const storedUser = JSON.parse(localStorage.getItem("chat-user1"));
     if (storedUser) {
-      setAuthUser(storedUser);
+      setAuthUser(storedUser); // Set the user in the context if it's stored in localStorage
     }
   }, []);
 

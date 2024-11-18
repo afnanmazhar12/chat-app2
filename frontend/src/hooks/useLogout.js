@@ -18,18 +18,22 @@ const useLogout = () => {
       const data = await res.json();
       console.log('Logout Response Data:', data);
 
-      // Check for successful response (don't treat "logged out successfully" as an error)
-      if (!res.ok || data.error === 'logged out successfully') {
-        if (data.error === 'logged out successfully') {
-          // If the logout was successful, clear localStorage and reset authUser
-          localStorage.removeItem("chat-user");
-          setAuthUser(null);
-          toast.success("Logged out successfully!");
-        } else {
-          // If there's another error message, throw an error
-          throw new Error(data.error || "Unknown logout error");
-        }
+      // Before removing, check if the item is stored
+      console.log("Before Removal:", localStorage.getItem("chat-user1"));
+
+      if (res.ok) {
+        // If the logout is successful, clear localStorage and reset authUser
+        localStorage.removeItem("chat-user1");
+        setAuthUser(null);
+        toast.success("Logged out successfully!");
+      } else {
+        // If logout failed, show an error message
+        throw new Error(data.error || "Unknown logout error");
       }
+
+      // After removal, check if it's removed
+      console.log("After Removal:", localStorage.getItem("chat-user1"));
+
     } catch (error) {
       console.error("Error during logout:", error);
       toast.error(error.message);
