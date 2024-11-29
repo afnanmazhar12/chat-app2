@@ -9,7 +9,7 @@ import userRoutes from "./routes/user.routes.js";
 import { app, server } from "./socket/socket.js";
 import connectToMongoDB from "./db/connectTOMongoDB.js";
 
-const __dirname = path.resolve(); // Fixed the capitalization
+const __dirname = path.resolve(); 
 
 dotenv.config();
 
@@ -22,18 +22,18 @@ app.get('/home', (req, res) => {
   res.send('Hello, World!');
 });
 
-// Use the /api/auth prefix for auth routes
+
 app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
 app.use('/api/users', userRoutes);
 
-app.use(express.static(path.join(__dirname, "frontend", "dist"))); // Fixed path
+app.use(express.static(path.join(__dirname, "frontend", "dist"))); 
 
 app.get("*", (req, res) => {
   res.sendFile(path.resolve(__dirname, "frontend", "dist", "index.html"));
 });
 
-// Start the server
+
 server.listen(PORT, () => {
   connectToMongoDB();
   console.log(`Server is running on http://localhost:${PORT}`);
